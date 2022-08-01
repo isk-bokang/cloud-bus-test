@@ -27,7 +27,7 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-bus-kafka")
 	implementation("org.projectlombok:lombok:1.18.22")
 	implementation("org.projectlombok:lombok:1.18.22")
-
+	implementation("org.apache.kafka:kafka-clients:3.2.1")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
