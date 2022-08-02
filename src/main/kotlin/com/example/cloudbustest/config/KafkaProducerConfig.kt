@@ -21,11 +21,12 @@ class KafkaProducerConfig(
 ) {
     @Bean
     fun producerFactory() : ProducerFactory<String, KafkaData> {
-        val configs = mutableMapOf<String, Any>()
-        configs[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = bootstrapServer
-        configs[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java
-        configs[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = JsonSerializer::class.java
+        val configs = mapOf(
+            ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to bootstrapServer,
+            ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class.java,
+            ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to JsonSerializer::class.java,
 
+        )
         return DefaultKafkaProducerFactory(configs)
     }
 

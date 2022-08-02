@@ -9,8 +9,8 @@ import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Service
 
 @Service
+@RequiredArgsConstructor
 class KafkaService(
-    @Autowired
     private val kafkaTemplate: KafkaTemplate<String, KafkaData>
 ) {
 
@@ -20,8 +20,8 @@ class KafkaService(
         kafkaTemplate.send("dummy", tmpData)
     }
 
-    @KafkaListener(topics = ["dummy"], groupId = "kafka-test", containerFactory = "kafkaDataListenerFactory")
-    fun consume(@Payload msg : String){
+    @KafkaListener(topics = ["dummy"], groupId = "kafka-test", containerFactory = "kafkaDataListenerFactory" )
+    fun consume(msg : KafkaData){
         println("consume : $msg")
     }
 }
